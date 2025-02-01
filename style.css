@@ -1,0 +1,418 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+:root {
+    --primary: #00ffff;
+    --dark: #0a192f;
+    --light: #ffffff;
+    --gray: #8892b0;
+    --glow-color: rgba(0, 255, 255, 0.6);
+}
+
+body {
+    background-image: url("background.jpg");
+    color: var(--light);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.logo {
+    color: var(--primary);
+    font-size: 24px;
+    font-weight: bold;
+    transition: text-shadow 0.3s ease;
+}
+
+.logo:hover {
+    text-shadow: 0 0 10px var(--glow-color);
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-links a {
+    color: var(--light);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.nav-links a.active {
+    color: var(--primary);
+    text-shadow: 0 0 10px var(--glow-color);
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+    text-shadow: 0 0 10px var(--glow-color);
+}
+
+.menu-btn {
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+/* Hologram Effect */
+@keyframes hologramFlicker {
+    0% { opacity: 0.97; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0.97; }
+}
+
+@keyframes hologramScan {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+.hologram-container {
+    position: relative;
+    /* border: 2px dotted var(--primary); */
+    background: rgba(0, 255, 255, 0.05);
+    padding: 5%;
+    margin: 20px 0;
+    overflow: hidden;
+    animation: hologramFlicker 2s infinite;
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+.hologram-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        transparent,
+        rgba(0, 255, 255, 0.2),
+        transparent
+    );
+    animation: hologramScan 2s linear infinite;
+    pointer-events: none;
+}
+
+.hologram-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    pointer-events: none;
+}  
+
+/* Content Sections */
+.content-section {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.content-section.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Hero Section */
+.hero-content {
+    flex: 1;
+}
+
+.hero-content h1 {
+    font-size: 48px;
+    margin-bottom: 16px;
+    transition: text-shadow 0.3s ease;
+}
+
+.hero-content h1:hover {
+    text-shadow: 0 0 15px var(--glow-color);
+}
+
+.hero-content h2 {
+    color: var(--primary);
+    font-size: 24px;
+    margin-bottom: 16px;
+    transition: text-shadow 0.3s ease;
+}
+
+.hero-content h2:hover {
+    text-shadow: 0 0 10px var(--glow-color);
+}
+
+.hero-content p {
+    color: var(--gray);
+    margin-bottom: 32px;
+    max-width: 500px;
+    transition: color 0.3s ease;
+}
+
+.hero-content p:hover {
+    color: var(--light);
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 32px;
+    background-color: var(--primary);
+    color: var(--dark);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #00cccc;
+    box-shadow: 0 0 20px var(--glow-color);
+    transform: scale(1.05);
+}
+
+.social-links {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.social-links a {
+    color: var(--gray);
+    font-size: 24px;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--primary);
+    text-shadow: 0 0 10px var(--glow-color);
+    transform: translateY(-2px);
+}
+
+.profile-image {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    flex-shrink: 0;
+}
+
+.profile-circle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: rgba(0, 255, 255, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.profile-circle:hover {
+    box-shadow: 0 0 30px var(--glow-color);
+    transform: scale(1.05);
+}
+
+.profile-circle img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.profile-circle img:hover {
+    box-shadow: 0 0 20px var(--glow-color);
+}
+
+/* Project Cards */
+.projects-grid {
+    display: flex;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.project-card {
+    border: 1px solid var(--primary);
+    padding: 20px;
+    background: rgba(0, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.project-card:hover {
+    box-shadow: 0 0 20px var(--glow-color);
+    transform: translateY(-5px);
+}
+
+.project-card h3 {
+    color: var(--primary);
+    margin-bottom: 10px;
+    transition: text-shadow 0.3s ease;
+}
+
+.project-card h3:hover {
+    text-shadow: 0 0 10px var(--glow-color);
+}
+
+/* Skills Section */
+.skills-grid {
+    display: flex;  /* Ubah dari grid ke flex */
+    justify-content: space-between;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 100px; /* Memperbesar gap antara Frontend dan Backend */
+    padding: 40px; /* Menambah padding untuk space dari container */
+    max-width: 1000px; /* Membatasi lebar maksimal agar tidak terlalu lebar */
+    margin: 0 auto; /* Center skills grid */
+}
+.skill-category{
+    flex: 1;  /* Membuat setiap category mengambil ruang yang sama */
+    max-width: 45%;  /* Membatasi lebar maksimal */
+
+}
+
+.skill-category h3 {
+    color: var(--primary);
+    margin-bottom: 10%;
+    font-size: 24px; /* Memperbesar ukuran font */  
+    text-align: center;
+    transition: text-shadow 0.3s ease;
+}
+
+.skill-category h3:hover {
+    text-shadow: 0 0 10px var(--glow-color);
+}
+
+.skill-list {
+    list-style: none;
+}
+
+.skill-list li {
+    margin-bottom: 25px; /* Memperbesar jarak antar skill */
+    font-size: 16px; /* Memperbesar ukuran font */
+}
+
+.skill-bar {
+    width: 100%;
+    height: 12px;
+    background: rgba(0, 255, 255, 0.1);
+    border: 1px solid var(--primary);
+    margin-top: 8px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    min-width: 250px; /* Menambah minimal width */
+}
+
+.skill-bar:hover {
+    box-shadow: 0 0 15px var(--glow-color);
+}
+
+.skill-progress {
+    height: 100%;
+    background: var(--primary);
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: width 1s ease-in-out;
+    box-shadow: 0 0 10px var(--glow-color); /* Menambah glow effect */
+}
+
+/* Timeline */
+.timeline {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline-item {
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid var(--primary);
+    background: rgba(0, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover {
+    box-shadow: 0 0 20px var(--glow-color);
+    transform: translateX(5px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background-color: black;
+        opacity: 90%;
+        padding: 20px;
+        flex-direction: column;
+        text-align: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .hologram-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-content {
+        order: 2;
+    }
+
+    .profile-image {
+        order: 1;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .hero-content h1 {
+        font-size: 36px;
+    }
+
+    .projects-grid {
+        flex-direction: column;
+    }    
+
+    .skills-grid {
+        flex-direction: column;
+        gap: 40px;
+        padding: 20px;
+        grid-template-columns: 1fr;
+    }
+
+    .skill-category {
+        max-width: 100%;  /* Full width on mobile */
+    }
+}
