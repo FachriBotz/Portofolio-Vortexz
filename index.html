@@ -164,19 +164,39 @@
                 </div>
             </section>
 
-            <!-- Content Section -->
-            <section id="content" class="content-section">
-                <div class="hologram-container">
-                    <div class="content-grid">
-                        <h2>Latest Blog Posts</h2>
-                        <!-- Add your blog posts or other content here -->
-                    </div>
+<!-- Content Section -->
+<section id="content" class="content-section">
+    <div class="hologram-container">
+        <div class="content-grid">
+            <h2>Hasil Editing</h2>
+            <div class="gallery">
+                <!-- Tambahkan gambar/video di sini -->
+                <div class="gallery-item">
+                    <img src="edit1.jpg" alt="Editing 1" onclick="openFullscreen('edit1.jpg')">
                 </div>
-            </section>
-        </main>
+                <div class="gallery-item">
+                    <img src="edit2.jpg" alt="Editing 2" onclick="openFullscreen('edit2.jpg')">
+                </div>
+                <div class="gallery-item">
+                    <video controls onclick="openFullscreen('edit-video.mp4')">
+                        <source src="edit-video.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
     </div>
+</section>
+
+<!-- Fullscreen Viewer -->
+<div id="fullscreen-viewer" class="fullscreen-viewer" onclick="closeFullscreen()">
+    <span class="close-btn">&times;</span>
+    <img id="fullscreen-img" src="" alt="Fullscreen">
+    <video id="fullscreen-video" controls>
+        <source src="" type="video/mp4">
+    </video>
+</div>
 
     <script src="script.js"></script>
 </body>
 
-                                </html>
+        </html>
