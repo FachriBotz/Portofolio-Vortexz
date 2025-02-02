@@ -4,6 +4,28 @@
         const navItems = document.querySelectorAll('.nav-links a');
         const contentSections = document.querySelectorAll('.content-section');
 
+function openFullscreen(mediaSrc) {
+    const viewer = document.getElementById("fullscreen-viewer");
+    const img = document.getElementById("fullscreen-img");
+    const video = document.getElementById("fullscreen-video");
+
+    if (mediaSrc.endsWith(".mp4")) {
+        img.style.display = "none";
+        video.style.display = "block";
+        video.src = mediaSrc;
+    } else {
+        video.style.display = "none";
+        img.style.display = "block";
+        img.src = mediaSrc;
+    }
+
+    viewer.style.display = "flex";
+}
+
+function closeFullscreen() {
+    document.getElementById("fullscreen-viewer").style.display = "none";
+}
+
         // Toggle mobile menu
         menuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
